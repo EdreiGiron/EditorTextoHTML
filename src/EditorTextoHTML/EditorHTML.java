@@ -51,7 +51,7 @@ public class EditorHTML extends JFrame implements ActionListener {
         areaCodigoHTML.addKeyListener(new OyenteCierreEtiqueta(areaCodigoHTML, arbolDOM));
         areaCodigoHTML.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
-              ActualizarArbolDOM();
+                ActualizarArbolDOM();
             }
         });
 
@@ -197,6 +197,7 @@ public class EditorHTML extends JFrame implements ActionListener {
         String html = areaCodigoHTML.getText();
         new ActualizadorDOM(arbolDOM).ActualizarArbol(html);
     }
+
     private void buscarTexto() {
         String buscarTexto = JOptionPane.showInputDialog(this, "Ingrese el texto a buscar:");
         if (buscarTexto != null && !buscarTexto.isEmpty()) {

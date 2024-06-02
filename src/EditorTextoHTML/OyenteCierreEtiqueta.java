@@ -26,7 +26,6 @@ public class OyenteCierreEtiqueta extends KeyAdapter {
             "html", "head", "body", "title", "div", "p", "span", "a", "img", "table",
             "tr", "td", "ul", "ol", "li", "form", "input", "button", "h1", "h2", "h3",
             "h4", "h5", "h6", "br", "hr", "img", "input", "link", "meta", "tbody"
-           
     );
 
     public OyenteCierreEtiqueta(JTextPane textPane, JTree arbolDOM) {

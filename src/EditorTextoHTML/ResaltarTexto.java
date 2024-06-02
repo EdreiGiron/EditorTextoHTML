@@ -43,7 +43,7 @@ public class ResaltarTexto implements DocumentListener {
             }
         }
         ActualizarNumeroLineas();
-        
+
     }
 
     private void ActualizarNumeroLineas() {

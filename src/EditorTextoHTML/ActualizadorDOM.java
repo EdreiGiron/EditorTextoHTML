@@ -11,6 +11,8 @@ package EditorTextoHTML;
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreePath;
 
 public class ActualizadorDOM {
 
@@ -50,6 +52,18 @@ public class ActualizadorDOM {
             } else {
                 break;
             }
+        }
+
+        ExpandirTodosLosNodos(arbolDOM, 0, arbolDOM.getRowCount());
+    }
+
+    private void ExpandirTodosLosNodos(JTree arbol, int indiceInicial, int cuentaRamas) {
+        for (int i = indiceInicial; i < cuentaRamas; ++i) {
+            arbol.expandRow(i);
+        }
+
+        if (arbol.getRowCount() != cuentaRamas) {
+            ExpandirTodosLosNodos(arbol, cuentaRamas, arbol.getRowCount());
         }
     }
 }
