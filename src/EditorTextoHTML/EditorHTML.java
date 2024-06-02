@@ -19,6 +19,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
+import javax.swing.text.StyledDocument;
 
 public class EditorHTML extends JFrame implements ActionListener {
 
@@ -36,6 +40,8 @@ public class EditorHTML extends JFrame implements ActionListener {
         setTitle("EDITOR TEXTO HTML");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setSize(Toolkit.getDefaultToolkit().getScreenSize());
 
         areaCodigoHTML = new JTextPane();
         areaCodigoHTML.setFont(new Font("Monospaced", Font.PLAIN, 13));
@@ -73,7 +79,7 @@ public class EditorHTML extends JFrame implements ActionListener {
         JScrollPane treeScrollPane = new JScrollPane(arbolDOM);
 
         treeScrollPane.setPreferredSize(
-                new Dimension(200, 0));
+                new Dimension(300, 0));
 
         JMenuBar menuEditorHTML = new JMenuBar();
         JMenu elementosMenu = new JMenu("Archivo");
@@ -183,7 +189,13 @@ public class EditorHTML extends JFrame implements ActionListener {
 
     private void imprimirDocumento() {
         try {
+            StyledDocument doc = areaCodigoHTML.getStyledDocument();
+            StyleContext sc = StyleContext.getDefaultStyleContext();
+            AttributeSet originalStyle = sc.addAttribute(sc.getEmptySet(), StyleConstants.Foreground, Color.WHITE);
+            AttributeSet blackStyle = sc.addAttribute(sc.getEmptySet(), StyleConstants.Foreground, Color.BLACK);
+            doc.setCharacterAttributes(0, doc.getLength(), blackStyle, false);
             areaCodigoHTML.print();
+            doc.setCharacterAttributes(0, doc.getLength(), originalStyle, false);
         } catch (PrinterException e) {
             e.printStackTrace();
         }

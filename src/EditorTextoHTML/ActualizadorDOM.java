@@ -23,7 +23,7 @@ public class ActualizadorDOM {
     }
 
     public void ActualizarArbol(String html) {
-        DefaultMutableTreeNode rama = new DefaultMutableTreeNode("!DOCTYPE");
+        DefaultMutableTreeNode rama = new DefaultMutableTreeNode("html");
         DefaultMutableTreeNode padreActual = rama;
         DefaultTreeModel modeloArbol = new DefaultTreeModel(rama);
         arbolDOM.setModel(modeloArbol);
